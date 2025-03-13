@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Projeto_Event_Plus/1.0.0": {
+        "runtime": {
+          "Projeto_Event_Plus.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Projeto_Event_Plus/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
