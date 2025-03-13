@@ -7,6 +7,10 @@ namespace Projeto_Event_Plus.Domains
     public class TipoEvento
     {
         [Key]
-        public Guid
+        public Guid TipoEventoID { get; set; }
+
+        [Column(TypeName = "VARCHAR(60)")]
+        [Required(ErrorMessage = "O tipo do evento é ")]
+        public string? TituloTipoEvento { get; set; }
     }
 }
