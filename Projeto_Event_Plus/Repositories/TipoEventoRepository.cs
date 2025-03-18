@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Projeto_Event_Plus.Context;
-using Projeto_Event_Plus.Domains;
+﻿using Projeto_Event_Plus.Context;
 using Projeto_Event_Plus.Interfaces;
+using Projeto_Event_Plus.Domains;
 
 namespace Projeto_Event_Plus.Repositories
 {
-    public class TipoEventoRepository : ITipoEvento
-    {
+    public class TipoEventoRepository : ITipoEventoRepository
+    {           
         private readonly Events_Plus_Context _context;
 
         public TipoEventoRepository(Events_Plus_Context context)
@@ -14,18 +13,27 @@ namespace Projeto_Event_Plus.Repositories
             _context = context;
         }
 
-        public void Atualizar(Guid id, TipoEvento tipoEvento)
+        public void Atualizar(Guid id, Projeto_Event_Plus.Domains.TipoEvento tipoEventos)
+        {
+            TipoEvento eventoBuscado = _context.TipoEvento.Find(id)!;
+
+            if (eventoBuscado != null)
+            {
+                eventoBuscado.TituloTipoEvento = tipoEventos.TituloTipoEvento;
+            }
+            _context.SaveChanges();
+        }
+        public Projeto_Event_Plus.Domains.TipoEvento BuscarPorId(Guid id)
         {
             try
             {
-                TipoEvento eventoBuscado = _context.TipoEvento.Find(id)!;
+                TipoEvento tipoEventoBuscado = _context.TipoEvento.Find(id)!;
 
-                if (eventoBuscado != null)
+                if (tipoEventoBuscado != null)
                 {
-                    eventoBuscado.TituloTipoEvento = tipoEvento.TituloTipoEvento;
+                    return tipoEventoBuscado;
                 }
-
-                _context.SaveChanges();
+                return null!;
             }
             catch (Exception)
             {
@@ -33,41 +41,24 @@ namespace Projeto_Event_Plus.Repositories
                 throw;
             }
         }
-
-        public Domains.TipoEvento BuscarPorID(Guid id)
+        public void Cadastrar(Projeto_Event_Plus.Domains.TipoEvento tipoEventos)
         {
             try
             {
-                TipoEvento eventoBuscado = _context.TipoEvento.Find(id)!;
-
-                if (eventoBuscado != null)
-                {
-                    eventoBuscado.TipoEventoID = eventoBuscado.TituloTipoEvento;
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public void Cadastrar(TipoEvento novoEvento)
-        {
-            try
-            {
-                _context.TipoEvento.Add(novoEvento);
+                _context.TipoEvento.Add(tipoEventos);
 
                 _context.SaveChanges();
             }
             catch (Exception)
             {
+
                 throw;
             }
         }
 
         public void Deletar(Guid id)
         {
+
             try
             {
                 TipoEvento eventoBuscado = _context.TipoEvento.Find(id)!;
@@ -76,26 +67,19 @@ namespace Projeto_Event_Plus.Repositories
                 {
                     _context.TipoEvento.Remove(eventoBuscado);
                 }
-
                 _context.SaveChanges();
             }
             catch (Exception)
             {
-                throw;
-            }
-        }
-        public List<Domains.TipoEvento> Listar()
-        {
-            try
-            {
-                List<TipoEvento> ListaDeEventos = _context.TipoEvento.Include(g => g.TituloTipoEvento).ToList();
 
-                return ListaDeEventos;
-            }
-            catch (Exception)
-            {
                 throw;
             }
+
+        }
+        public List<TipoEvento> Listar()
+        {
+            List<TipoEvento> ListaEvento = _context.TipoEvento.ToList();
+            return ListaEvento;
         }
     }
 }

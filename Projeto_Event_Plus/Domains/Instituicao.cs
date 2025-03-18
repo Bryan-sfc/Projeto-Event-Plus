@@ -13,7 +13,7 @@ namespace Projeto_Event_Plus.Domains
 
         [Column(TypeName = "VARCHAR(30)")]
         [Required(ErrorMessage = "O nome fantasia é ")]
-        public string? NomeFantasma { get; set; }
+        public string? NomeFantasia { get; set; }
 
         [Column(TypeName = "VARCHAR(120)")]
         [Required(ErrorMessage = "O endereço é ")]

@@ -17,7 +17,7 @@ namespace Projeto_Event_Plus.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.2")
+                .HasAnnotation("ProductVersion", "9.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -97,7 +97,7 @@ namespace Projeto_Event_Plus.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(120)");
 
-                    b.Property<string>("NomeFantasma")
+                    b.Property<string>("NomeFantasia")
                         .IsRequired()
                         .HasColumnType("VARCHAR(30)");
 
@@ -109,7 +109,7 @@ namespace Projeto_Event_Plus.Migrations
                     b.ToTable("Instituicao");
                 });
 
-            modelBuilder.Entity("Projeto_Event_Plus.Domains.PresencasEventos", b =>
+            modelBuilder.Entity("Projeto_Event_Plus.Domains.Presenca", b =>
                 {
                     b.Property<Guid>("PresencaID")
                         .ValueGeneratedOnAdd()
@@ -163,7 +163,7 @@ namespace Projeto_Event_Plus.Migrations
                     b.ToTable("TipoUsuario");
                 });
 
-            modelBuilder.Entity("api_filmes_senai.Domains.Usuario", b =>
+            modelBuilder.Entity("Projeto_Event_Plus.Domains.Usuario", b =>
                 {
                     b.Property<Guid>("IdUsuario")
                         .ValueGeneratedOnAdd()
@@ -201,7 +201,7 @@ namespace Projeto_Event_Plus.Migrations
                         .WithMany()
                         .HasForeignKey("EventoID");
 
-                    b.HasOne("api_filmes_senai.Domains.Usuario", "Usuario")
+                    b.HasOne("Projeto_Event_Plus.Domains.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioID");
 
@@ -229,7 +229,7 @@ namespace Projeto_Event_Plus.Migrations
                     b.Navigation("TipoEvento");
                 });
 
-            modelBuilder.Entity("Projeto_Event_Plus.Domains.PresencasEventos", b =>
+            modelBuilder.Entity("Projeto_Event_Plus.Domains.Presenca", b =>
                 {
                     b.HasOne("Projeto_Event_Plus.Domains.Eventos", "Eventos")
                         .WithMany()
@@ -237,7 +237,7 @@ namespace Projeto_Event_Plus.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("api_filmes_senai.Domains.Usuario", "Usuario")
+                    b.HasOne("Projeto_Event_Plus.Domains.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -248,7 +248,7 @@ namespace Projeto_Event_Plus.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("api_filmes_senai.Domains.Usuario", b =>
+            modelBuilder.Entity("Projeto_Event_Plus.Domains.Usuario", b =>
                 {
                     b.HasOne("Projeto_Event_Plus.Domains.TipoUsuario", "TipoUsuario")
                         .WithMany()

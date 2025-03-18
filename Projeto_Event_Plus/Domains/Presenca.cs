@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using api_filmes_senai.Domains;
 
 namespace Projeto_Event_Plus.Domains
 {

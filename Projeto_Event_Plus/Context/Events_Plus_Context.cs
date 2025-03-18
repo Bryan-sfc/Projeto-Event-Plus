@@ -1,7 +1,5 @@
-﻿using api_filmes_senai.Domains;
+﻿using Projeto_Event_Plus.Domains;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Projeto_Event_Plus.Domains;
 
 namespace Projeto_Event_Plus.Context
 {

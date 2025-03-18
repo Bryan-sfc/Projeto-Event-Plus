@@ -1,9 +1,8 @@
-﻿using api_filmes_senai.Domains;
-using Projeto_Event_Plus.Domains;
+﻿using Projeto_Event_Plus.Domains;
 
 namespace Projeto_Event_Plus.Interfaces
 {
-    public interface ITipoUsuario
+    public interface ITipoUsuarioRepository
     {
         void Cadastrar(TipoUsuario novoTipoUsuario);
 

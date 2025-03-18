@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
-using Projeto_Event_Plus.Domains;
 
-namespace api_filmes_senai.Domains
+namespace Projeto_Event_Plus.Domains
 {
     [Table("Usuario")]
     [Index(nameof(Email), IsUnique = true)]
