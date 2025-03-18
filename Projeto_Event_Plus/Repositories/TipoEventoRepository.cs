@@ -13,7 +13,7 @@ namespace Projeto_Event_Plus.Repositories
             _context = context;
         }
 
-        public void Atualizar(Guid id, Projeto_Event_Plus.Domains.TipoEvento tipoEventos)
+        public void Atualizar(Guid id, TipoEvento tipoEventos)
         {
             TipoEvento eventoBuscado = _context.TipoEvento.Find(id)!;
 
@@ -23,7 +23,8 @@ namespace Projeto_Event_Plus.Repositories
             }
             _context.SaveChanges();
         }
-        public Projeto_Event_Plus.Domains.TipoEvento BuscarPorId(Guid id)
+
+        public TipoEvento BuscarPorId(Guid id)
         {
             try
             {
@@ -41,7 +42,8 @@ namespace Projeto_Event_Plus.Repositories
                 throw;
             }
         }
-        public void Cadastrar(Projeto_Event_Plus.Domains.TipoEvento tipoEventos)
+
+        public void Cadastrar(TipoEvento tipoEventos)
         {
             try
             {
@@ -58,7 +60,6 @@ namespace Projeto_Event_Plus.Repositories
 
         public void Deletar(Guid id)
         {
-
             try
             {
                 TipoEvento eventoBuscado = _context.TipoEvento.Find(id)!;
@@ -78,8 +79,8 @@ namespace Projeto_Event_Plus.Repositories
         }
         public List<TipoEvento> Listar()
         {
-            List<TipoEvento> ListaEvento = _context.TipoEvento.ToList();
-            return ListaEvento;
+            List<TipoEvento> ListaTipoEvento = _context.TipoEvento.ToList();
+            return ListaTipoEvento;
         }
     }
 }

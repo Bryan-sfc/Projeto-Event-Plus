@@ -18,7 +18,7 @@ namespace Projeto_Event_Plus.Context
         public DbSet<Presenca> Presenca { get; set; }
         public DbSet<ComentarioEvento> Comentario { get; set; }
         public DbSet<Instituicao> Instituicao { get; set; }
-        public DbSet<TipoUsuario> TipoUsuarios { get; set; }
+        public DbSet<TipoUsuario> TipoUsuario { get; set; }
         public DbSet<TipoEvento> TipoEvento {  get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
