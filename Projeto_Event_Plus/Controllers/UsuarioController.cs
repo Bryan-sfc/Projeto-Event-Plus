@@ -131,7 +131,6 @@ namespace Projeto_Event_Plus.Controllers
                         Token = new JwtSecurityTokenHandler().WriteToken(token),
                     }
                 );
-
             }
             catch (Exception e)
             {

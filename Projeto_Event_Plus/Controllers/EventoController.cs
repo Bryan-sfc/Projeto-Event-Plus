@@ -57,11 +57,16 @@ namespace Projeto_Event_Plus.Controllers
         }
 
         /// <summary>
-        /// Endpoint  para Pegar um Evento no Banco de Dados Pelo Id
+        /// Endpoint  para Cadastar um Evento no Banco de Dados
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        []
+        [HttpPost]
+        public IActionResult Post(ComentarioEvento )
+        {
+
+        }
+
 
         public IActionResult Index()
         {
