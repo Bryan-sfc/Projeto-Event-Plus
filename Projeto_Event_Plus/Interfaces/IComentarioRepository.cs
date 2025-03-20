@@ -4,12 +4,12 @@ namespace Projeto_Event_Plus.Interfaces
 {
     public interface IComentarioRepository
     {
-        void Cadastrar(IComentarioRepository comentario);
+        void Cadastrar(ComentarioEvento comentario);
 
         void Deletar(Guid id);
 
-        List<IComentarioRepository> Listar(Guid id);
+        List<ComentarioEvento> Listar(Guid id);
 
-        IComentarioRepository BuscarPorIdUsuario(Guid idUsuario, Guid idEvento);
+        ComentarioEvento BuscarPorIdUsuario(Guid idUsuario, Guid idEvento);
     }
 }

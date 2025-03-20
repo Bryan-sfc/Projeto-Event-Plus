@@ -21,8 +21,8 @@ builder.Services.AddDbContext<Events_Plus_Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Adicionar o repositorio e a interface ao container de injecao de dependencia
-//builder.Services.AddScoped<IComentarioRepository, ComentarioRepository>();
-//builder.Services.AddScoped<IEventoRepository, EventoRepository>();
+builder.Services.AddScoped<IComentarioRepository, ComentarioEventoRepository>();
+builder.Services.AddScoped<IEventoRepository, EventoRepository>();
 //builder.Services.AddScoped<IPresencaEventosRepository, PresencaEventosRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ITipoEventoRepository, TipoEventoRepository>();

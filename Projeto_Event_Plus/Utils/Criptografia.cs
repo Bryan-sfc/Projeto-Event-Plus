@@ -11,7 +11,5 @@
         {
             return BCrypt.Net.BCrypt.Verify(senhaInformada, senhaBanco);
         }
-
-
     }
 }

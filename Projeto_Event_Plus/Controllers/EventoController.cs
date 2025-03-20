@@ -56,6 +56,13 @@ namespace Projeto_Event_Plus.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint  para Pegar um Evento no Banco de Dados Pelo Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        []
+
         public IActionResult Index()
         {
             return View();
