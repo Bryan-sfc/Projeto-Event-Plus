@@ -4,6 +4,9 @@ using Projeto_Event_Plus.Interfaces;
 
 namespace Projeto_Event_Plus.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
+    [Produces("application/json")]
     public class TipoUsuarioController : Controller
     {
         private readonly ITipoUsuarioRepository _tipoUsuariorepository;

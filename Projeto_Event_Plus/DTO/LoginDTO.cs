@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace api_filmes_senai.DTO
+namespace Projeto_Event_Plus.DTO
 {
     public class LoginDTO
     {

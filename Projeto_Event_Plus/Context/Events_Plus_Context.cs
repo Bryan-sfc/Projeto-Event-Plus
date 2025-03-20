@@ -25,7 +25,7 @@ namespace Projeto_Event_Plus.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=NOTE06-S28\\SQLEXPRESS;Database=EventsPlus;User ID=sa;Password=Senai@134;TrustServerCertificate=true");
+                optionsBuilder.UseSqlServer("Server=NOTE06-S28\\SQLEXPRESS ; Database=EventsPlus ; User ID=sa ; Password=Senai@134 ; TrustServerCertificate=true");
             }
         }
     }

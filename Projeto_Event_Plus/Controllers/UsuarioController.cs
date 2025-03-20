@@ -1,13 +1,16 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using api_filmes_senai.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Projeto_Event_Plus.Domains;
 using Projeto_Event_Plus.Interfaces;
+using Projeto_Event_Plus.Domains;
+using Projeto_Event_Plus.DTO;
 
 namespace Projeto_Event_Plus.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
+    [Produces("application/json")]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _usuarioRepository;
