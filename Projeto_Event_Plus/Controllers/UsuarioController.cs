@@ -21,6 +21,26 @@ namespace Projeto_Event_Plus.Controllers
         }
 
         /// <summary>
+        /// Endpoint  para Listar Todos os Usuario Presentes no Banco de Dados
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<Usuario> listaDeUsuarios = _usuarioRepository.Listar();
+
+                return Ok(listaDeUsuarios);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        /// <summary>
         /// Endpoint  para Adicionar Usuario no Banco de Dados
         /// </summary>
         /// <param name="id"></param>
@@ -40,13 +60,12 @@ namespace Projeto_Event_Plus.Controllers
             }
         }
 
-
         /// <summary>
         /// Endpoint  para Buscar Usuario um Pelo ID no Banco de Dados
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("BuscarPeloId{id}")]
+        [HttpGet("BuscarPorId/{id}")]
         public IActionResult Get(Guid id)
         {
             try

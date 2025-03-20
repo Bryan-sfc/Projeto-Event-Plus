@@ -100,8 +100,8 @@ namespace Projeto_Event_Plus.Controllers
         /// Endpoint  para Buscar um TipoEvento Pelo Seu Id
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>Evento Buscado</returns>
-        [HttpGet("BuscarPorId{id}")]
+        /// <returns></returns>
+        [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(Guid id)
         {
             try
@@ -110,9 +110,8 @@ namespace Projeto_Event_Plus.Controllers
 
                 return Ok(tipoEventoBuscado);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return BadRequest(e.Message);
                 throw;
             }
         }

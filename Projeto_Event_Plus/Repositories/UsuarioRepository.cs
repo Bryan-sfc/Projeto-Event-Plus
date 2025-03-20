@@ -56,7 +56,6 @@ namespace Projeto_Event_Plus.Repositories
                 throw;
             }
         }
-
         public void Cadastrar(Usuario novoUsuario)
         {
             try
@@ -68,9 +67,14 @@ namespace Projeto_Event_Plus.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
+        }
+
+        public List<Usuario> Listar()
+        {
+            List<Usuario> listaUsuario = _context.Usuarios.ToList();
+            return listaUsuario;
         }
     }
 }

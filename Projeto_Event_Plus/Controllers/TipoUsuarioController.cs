@@ -9,11 +9,11 @@ namespace Projeto_Event_Plus.Controllers
     [Produces("application/json")]
     public class TipoUsuarioController : Controller
     {
-        private readonly ITipoUsuarioRepository _tipoUsuariorepository;
+        private readonly ITipoUsuarioRepository _tipoUsuarioRepository;
 
         public TipoUsuarioController(ITipoUsuarioRepository tipoUsuarioRepository)
         {
-            _tipoUsuariorepository = tipoUsuarioRepository;
+            _tipoUsuarioRepository = tipoUsuarioRepository;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Projeto_Event_Plus.Controllers
         {
             try
             {
-                List<TipoUsuario> listaDeTiposUsuario = _tipoUsuariorepository.Listar();
+                List<TipoUsuario> listaDeTiposUsuario = _tipoUsuarioRepository.Listar();
 
                 return Ok(listaDeTiposUsuario);
             }
@@ -46,7 +46,7 @@ namespace Projeto_Event_Plus.Controllers
         {
             try
             {
-                _tipoUsuariorepository.Cadastrar(novoTipoUsuario);
+                _tipoUsuarioRepository.Cadastrar(novoTipoUsuario);
 
                 return Created();
             }
@@ -66,7 +66,7 @@ namespace Projeto_Event_Plus.Controllers
         {
             try
             {
-                _tipoUsuariorepository.Deletar(id);
+                _tipoUsuarioRepository.Deletar(id);
 
                 return NoContent();
             }
@@ -86,7 +86,7 @@ namespace Projeto_Event_Plus.Controllers
         {
             try
             {
-                _tipoUsuariorepository.Atualizar(id, tipoUsuario);
+                _tipoUsuarioRepository.Atualizar(id, tipoUsuario);
 
                 return NoContent();
             }
@@ -101,12 +101,12 @@ namespace Projeto_Event_Plus.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Evento Buscado</returns>
-        [HttpGet("BuscarPorId{id}")]
+        [HttpGet("BuscarPorId/{id}")]
         public IActionResult Get(Guid id)
         {
             try
             {
-                TipoUsuario tipoUsuarioBuscado = _tipoUsuariorepository.BuscarPorID(id);
+                TipoUsuario tipoUsuarioBuscado = _tipoUsuarioRepository.BuscarPorID(id);
 
                 return Ok(tipoUsuarioBuscado);
             }

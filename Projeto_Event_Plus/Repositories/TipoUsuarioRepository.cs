@@ -1,4 +1,5 @@
-﻿using Projeto_Event_Plus.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using Projeto_Event_Plus.Context;
 using Projeto_Event_Plus.Domains;
 using Projeto_Event_Plus.Interfaces;
 
@@ -64,6 +65,10 @@ namespace Projeto_Event_Plus.Repositories
             {
                 TipoUsuario tipoUsuarioBuscado = _context.TipoUsuario.Find(id)!;
 
+                if (tipoUsuarioBuscado != null)
+                {
+                    _context.TipoUsuario.Remove(tipoUsuarioBuscado);
+                }
                 _context.SaveChanges();
             }
             catch (Exception)

@@ -36,10 +36,4 @@ var app = builder.Build();
 //Adicionar o mapeamento dos controllers
 app.MapControllers();
 
-//Adicionar a autenticação
-app.UseAuthentication();
-
-//Adicionar a autorização
-app.UseAuthorization();
-
 app.Run();

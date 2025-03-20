@@ -53,7 +53,6 @@ namespace Projeto_Event_Plus.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -62,17 +61,16 @@ namespace Projeto_Event_Plus.Repositories
         {
             try
             {
-                TipoEvento eventoBuscado = _context.TipoEvento.Find(id)!;
+                TipoEvento tipoEventoBuscado = _context.TipoEvento.Find(id)!;
 
-                if (eventoBuscado != null)
+                if (tipoEventoBuscado != null)
                 {
-                    _context.TipoEvento.Remove(eventoBuscado);
+                    _context.TipoEvento.Remove(tipoEventoBuscado);
                 }
                 _context.SaveChanges();
             }
             catch (Exception)
             {
-
                 throw;
             }
 

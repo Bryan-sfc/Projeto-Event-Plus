@@ -65,7 +65,7 @@
   {
     "ContainingType": "Projeto_Event_Plus.Controllers.TipoEventoController",
     "Method": "GetById",
-    "RelativePath": "api/TipoEvento/BuscarPorId{id}",
+    "RelativePath": "api/TipoEvento/BuscarPorId/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -144,7 +144,7 @@
   {
     "ContainingType": "Projeto_Event_Plus.Controllers.TipoUsuarioController",
     "Method": "Get",
-    "RelativePath": "api/TipoUsuario/BuscarPorId{id}",
+    "RelativePath": "api/TipoUsuario/BuscarPorId/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -155,6 +155,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Projeto_Event_Plus.Controllers.UsuarioController",
+    "Method": "Get",
+    "RelativePath": "api/Usuario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -168,22 +178,6 @@
       {
         "Name": "novoUsuario",
         "Type": "Projeto_Event_Plus.Domains.Usuario",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.UsuarioController",
-    "Method": "Get",
-    "RelativePath": "api/Usuario/BuscarPeloId{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
@@ -215,6 +209,22 @@
       {
         "Name": "id",
         "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Projeto_Event_Plus.Controllers.UsuarioController",
+    "Method": "Get",
+    "RelativePath": "api/Usuario/BuscarPorId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
