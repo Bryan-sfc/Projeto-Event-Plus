@@ -15,30 +15,33 @@ namespace Projeto_Event_Plus.Repositories
 
         public void Atualizar(Guid id, TipoEvento tipoEventos)
         {
-            TipoEvento eventoBuscado = _context.TipoEvento.Find(id)!;
-
-            if (eventoBuscado != null)
+            try
             {
-                eventoBuscado.TituloTipoEvento = tipoEventos.TituloTipoEvento;
+                TipoEvento tipoBuscado = _context.TipoEvento.Find(id)!;
+
+                if (tipoBuscado != null)
+                {
+                    tipoBuscado.TituloTipoEvento = tipoEventos.TituloTipoEvento;
+                }
+
+                _context.TipoEvento.Update(tipoBuscado!);
+
+                _context.SaveChanges();
             }
-            _context.SaveChanges();
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public TipoEvento BuscarPorId(Guid id)
         {
             try
             {
-                TipoEvento tipoEventoBuscado = _context.TipoEvento.Find(id)!;
-
-                if (tipoEventoBuscado != null)
-                {
-                    return tipoEventoBuscado;
-                }
-                return null!;
+                return _context.TipoEvento.Find(id)!;
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -47,6 +50,8 @@ namespace Projeto_Event_Plus.Repositories
         {
             try
             {
+                tipoEventos.TipoEventoID = Guid.NewGuid();
+
                 _context.TipoEvento.Add(tipoEventos);
 
                 _context.SaveChanges();
@@ -61,24 +66,33 @@ namespace Projeto_Event_Plus.Repositories
         {
             try
             {
-                TipoEvento tipoEventoBuscado = _context.TipoEvento.Find(id)!;
+                TipoEvento tipoBuscado = _context.TipoEvento.Find(id)!;
 
-                if (tipoEventoBuscado != null)
+                if (tipoBuscado != null)
                 {
-                    _context.TipoEvento.Remove(tipoEventoBuscado);
+                    _context.TipoEvento.Remove(tipoBuscado);
                 }
+
                 _context.SaveChanges();
             }
             catch (Exception)
             {
                 throw;
             }
-
         }
+
         public List<TipoEvento> Listar()
         {
-            List<TipoEvento> ListaTipoEvento = _context.TipoEvento.ToList();
-            return ListaTipoEvento;
+            try
+            {
+                return _context.TipoEvento
+                    .OrderBy(tp => tp.TituloTipoEvento)
+                    .ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

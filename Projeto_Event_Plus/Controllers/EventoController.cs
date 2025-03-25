@@ -17,7 +17,7 @@ namespace Projeto_Event_Plus.Controllers
         }
 
         /// <summary>
-        /// Endpoint  para Listar Todos os Eventos no Banco de Dados
+        /// Endpoint  para Listar Todos os Eventos Presentes no Banco de Dados
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -37,18 +37,38 @@ namespace Projeto_Event_Plus.Controllers
         }
 
         /// <summary>
-        /// Endpoint  para Pegar um Evento no Banco de Dados Pelo Id
+        /// Endpoint  para Cadastar um Evento no Banco de Dados
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("BuscarPorId/{id}")]
-        public IActionResult Get(Guid id)
+        [HttpPost]
+        public IActionResult Post(Eventos novoEvento)
         {
             try
             {
-                Eventos eventoBuscado =  _eventoRepository.BuscarPorId(id);
+                _eventoRepository.Cadastrar(novoEvento);
 
-                return Ok(eventoBuscado);
+                return Created();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint  para Deletar um Evento no Banco de Dados
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public IActionResult Deletar(Guid id)
+        {
+            try
+            {
+                _eventoRepository.Deletar(id);
+
+                return NoContent();
             }
             catch (Exception)
             {
@@ -57,16 +77,65 @@ namespace Projeto_Event_Plus.Controllers
         }
 
         /// <summary>
-        /// Endpoint  para Cadastar um Evento no Banco de Dados
+        /// Endpoint  para Atualizar um Evento no Banco de Dados
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpPost]
-        public IActionResult Post(ComentarioEvento )
+        [HttpPut("{id}")]
+        public IActionResult Put(Guid id, Eventos Evento)
         {
+            try
+            {
+                _eventoRepository.Atualizar(id, Evento);
 
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
+        /// <summary>
+        /// Endpoint  para ListarPorId Varios Eventos no Banco de Dados
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("ListarPorId{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                List<Eventos> listaDeEventosPorId = _eventoRepository.ListarPorID(id);
+
+                return Ok(listaDeEventosPorId);
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint  próximos Eventos no Banco de Dados
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("ListarProximosEventos{id}")]
+        public IActionResult ListarProximosEventos()
+        {
+            try
+            {
+                List<Eventos> listaProximoEventos = _eventoRepository.ListarProximosEventos();
+                
+                return Ok(listaProximoEventos);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
 
         public IActionResult Index()
         {

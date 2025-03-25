@@ -15,26 +15,21 @@ namespace Projeto_Event_Plus.Repositories
 
         public void Atualizar(Guid id, Eventos evento)
         {
-            Eventos eventoBuscado = _context.Eventos.Find(id)!;
-
-            if (eventoBuscado != null)
-            {
-                eventoBuscado.Evento = evento.Evento;
-            }
-            _context.SaveChanges();    
-        }
-
-        public Eventos BuscarPorID(Guid id)
-        {
             try
             {
                 Eventos eventoBuscado = _context.Eventos.Find(id)!;
 
                 if (eventoBuscado != null)
                 {
-                    return eventoBuscado;
+                    eventoBuscado.DataEvento = evento.DataEvento;
+                    eventoBuscado.Evento = evento.Evento;
+                    eventoBuscado.Descricao = evento.Descricao;
+                    eventoBuscado.TipoEventoID = evento.TipoEventoID;
                 }
-                return null!;
+
+                _context.Eventos.Update(eventoBuscado!);
+
+                _context.SaveChanges();
             }
             catch (Exception)
             {
@@ -46,6 +41,14 @@ namespace Projeto_Event_Plus.Repositories
         {
             try
             {
+                // Verifica se a data do evento é maior que a data atual
+                if (novoEvento.DataEvento < DateTime.Now)
+                {
+                    throw new ArgumentException("A data do evento deve ser maior ou igual a data atual.");
+                }
+
+                novoEvento.EventosID = Guid.NewGuid();
+
                 _context.Eventos.Add(novoEvento);
 
                 _context.SaveChanges();
@@ -66,7 +69,52 @@ namespace Projeto_Event_Plus.Repositories
                 {
                     _context.Eventos.Remove(eventoBuscado);
                 }
+
                 _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<Eventos> Listar()
+        {
+            try
+            {
+                return _context.Eventos
+                    .Select(e => new Eventos
+                    {
+                        EventosID = e.EventosID,
+                        Evento = e.Evento,
+                        Descricao = e.Descricao,
+                        DataEvento = e.DataEvento,
+                        TipoEventoID = e.TipoEventoID,
+                        TipoEvento = new TipoEvento
+                        {
+                            TipoEventoID = e.TipoEventoID,
+                            TituloTipoEvento = e.TipoEvento!.TituloTipoEvento
+                        },
+                        InstituicaoID = e.InstituicaoID,
+                        Intituicao = new Instituicao
+                        {
+                            InstituicaoID = e.InstituicaoID,
+                            NomeFantasia = e.Intituicao!.NomeFantasia
+                        }
+                    }).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<Eventos> ListarPorID(Guid id)
+        {
+            try
+            {
+                List<Eventos> listaEvento = _context.Eventos.Where(p => p.EventosID == id).ToList();
+                return listaEvento;
             }
             catch (Exception)
             {
@@ -75,20 +123,38 @@ namespace Projeto_Event_Plus.Repositories
             }
         }
 
-        public List<Eventos> Listar()
+        public List<Eventos> ListarProximosEventos()
         {
-            List<Eventos> listaDeEventos = _context.Eventos.ToList();
-            return listaDeEventos;
-        }
+            try
+            {
+                return _context.Eventos
+                    .Select(e => new Eventos
+                    {
+                        EventosID = e.EventosID,
+                        Evento = e.Evento,
+                        Descricao = e.Descricao,
+                        DataEvento = e.DataEvento,
+                        TipoEventoID = e.TipoEventoID,
+                        TipoEvento = new TipoEvento
+                        {
+                            TipoEventoID = e.TipoEventoID,
+                            TituloTipoEvento = e.TipoEvento!.TituloTipoEvento
+                        },
+                        InstituicaoID = e.InstituicaoID,
+                        Intituicao = new Instituicao
+                        {
+                            InstituicaoID = e.InstituicaoID,
+                            NomeFantasia = e.Intituicao!.NomeFantasia
+                        }
 
-        public List<Eventos> ListarPorID(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Eventos ProximosEventos()
-        {
-            throw new NotImplementedException();
+                    })
+                    .Where(e => e.DataEvento >= DateTime.Now)
+                    .ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

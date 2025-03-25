@@ -6,8 +6,6 @@ namespace Projeto_Event_Plus.Interfaces
     {
         void Atualizar(Guid id, Eventos evento);
 
-        TipoEvento BuscarPorId(Guid id);
-        
         void Cadastrar(Eventos novoEvento);
 
         void Deletar(Guid id);
@@ -16,6 +14,6 @@ namespace Projeto_Event_Plus.Interfaces
 
         List<Eventos> ListarPorID(Guid id);
 
-        Eventos ProximosEventos();
+        List<Eventos> ListarProximosEventos();
     }
 }

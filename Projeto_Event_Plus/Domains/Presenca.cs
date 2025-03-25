@@ -9,7 +9,7 @@ namespace Projeto_Event_Plus.Domains
         [Key]
         public Guid PresencaID { get; set; }
 
-        public Guid Situcao { get; set; }
+        public bool Situcao { get; set; }
 
         public Guid UsuarioID { get; set; }
         [ForeignKey("UsuarioID")]

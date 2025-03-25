@@ -4,20 +4,22 @@ using Projeto_Event_Plus.Interfaces;
 
 namespace Projeto_Event_Plus.Repositories
 {
-    public class ComentarioEventoRepository : IComentarioRepository
+    public class ComentarioRepository : IComentarioRepository
     {
         private readonly Events_Plus_Context _context;
 
-        public ComentarioEventoRepository(Events_Plus_Context context)
+        public ComentarioRepository(Events_Plus_Context context)
         {
             _context = context;
         }
 
-        public void Cadastrar(ComentarioEvento comentario)
+        public void Cadastrar(ComentarioEvento comentarioEvento)
         {
             try
             {
-                _context.Comentario.Add(comentario);
+                comentarioEvento.ComentarioID= Guid.NewGuid();
+
+                _context.Comentario.Add(comentarioEvento);
 
                 _context.SaveChanges();
             }
@@ -31,12 +33,13 @@ namespace Projeto_Event_Plus.Repositories
         {
             try
             {
-                ComentarioEvento comentarioBuscado = _context.Comentario.Find(id)!;
+                ComentarioEvento comentarioEventoBuscado = _context.Comentario.Find(id)!;
 
-                if (comentarioBuscado != null)
+                if (comentarioEventoBuscado != null)
                 {
-                    _context.Comentario.Remove(comentarioBuscado);
+                    _context.Comentario.Remove(comentarioEventoBuscado);
                 }
+
                 _context.SaveChanges();
             }
             catch (Exception)

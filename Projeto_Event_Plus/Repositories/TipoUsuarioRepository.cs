@@ -16,30 +16,33 @@ namespace Projeto_Event_Plus.Repositories
 
         public void Atualizar(Guid id, TipoUsuario tipoUsuario)
         {
-            TipoUsuario usuarioBuscado = _context.TipoUsuario.Find(id)!;
-
-            if (usuarioBuscado != null)
+            try
             {
-                usuarioBuscado.TituloTipoUsuario = tipoUsuario.TituloTipoUsuario; 
+                TipoUsuario tipoBuscado = _context.TipoUsuario.Find(id)!;
+
+                if (tipoBuscado != null)
+                {
+                    tipoBuscado.TituloTipoUsuario = tipoUsuario.TituloTipoUsuario;
+                }
+
+                _context.TipoUsuario.Update(tipoBuscado!);
+
+                _context.SaveChanges();
             }
-            _context.SaveChanges();
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public TipoUsuario BuscarPorID(Guid id)
         {
             try
             {
-                TipoUsuario tipoUsuarioBuscado = _context.TipoUsuario.Find(id)!;
-
-                if (tipoUsuarioBuscado != null)
-                {
-                    return tipoUsuarioBuscado;
-                }
-                return null!;
+                return _context.TipoUsuario.Find(id)!;
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -48,13 +51,14 @@ namespace Projeto_Event_Plus.Repositories
         {
             try
             {
+                novoTipoUsuario.TipoUsuarioID = Guid.NewGuid();
+
                 _context.TipoUsuario.Add(novoTipoUsuario);
 
                 _context.SaveChanges();
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -63,25 +67,31 @@ namespace Projeto_Event_Plus.Repositories
         {
             try
             {
-                TipoUsuario tipoUsuarioBuscado = _context.TipoUsuario.Find(id)!;
+                TipoUsuario tipoBuscado = _context.TipoUsuario.Find(id)!;
 
-                if (tipoUsuarioBuscado != null)
+                if (tipoBuscado != null)
                 {
-                    _context.TipoUsuario.Remove(tipoUsuarioBuscado);
+                    _context.TipoUsuario.Remove(tipoBuscado);
                 }
+
                 _context.SaveChanges();
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
         public List<TipoUsuario> Listar()
         {
-            List<TipoUsuario> listaTipoUsuario = _context.TipoUsuario.ToList();
-            return listaTipoUsuario;
+            try
+            {
+                return _context.TipoUsuario.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

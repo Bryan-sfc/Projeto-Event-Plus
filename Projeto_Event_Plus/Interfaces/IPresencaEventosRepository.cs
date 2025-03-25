@@ -6,13 +6,13 @@ namespace Projeto_Event_Plus.Interfaces
     {
         void Deletar(Guid id);
 
-        List<IPresencaEventosRepository> Listar();
+        List<Presenca> Listar();
 
-        IPresencaEventosRepository BuscarPorID(Guid id);
+        Presenca BuscarPorID(Guid id);
 
-        void Atualizar(Guid id, IPresencaEventosRepository presencaEventos);
+        void Atualizar(Guid id, Presenca presencaEventos);
 
-        List<IPresencaEventosRepository> ListarMinhas(Guid id);
+        List<Presenca> ListarMinhas(Guid id);
 
         void Inscrever(Presenca evento);
     }
