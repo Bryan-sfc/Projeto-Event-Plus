@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Projeto_Event_Plus.Context;
+﻿using Projeto_Event_Plus.Context;
 using Projeto_Event_Plus.Domains;
 using Projeto_Event_Plus.Interfaces;
 

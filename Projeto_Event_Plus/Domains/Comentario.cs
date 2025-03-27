@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Projeto_Event_Plus.Domains
 {
     [Table("Comentario")]
-    public class ComentarioEvento
+    public class Comentario
     {
         [Key]
         public Guid ComentarioID { get; set; }
@@ -13,6 +13,7 @@ namespace Projeto_Event_Plus.Domains
         [Required(ErrorMessage = "A descrição do evento é ")]
         public string? Descricao { get; set; }
 
+        [Required(ErrorMessage = "Defina se o comentário poderá ser exibido ou não!")]
         public bool Exibe { get; set; }
 
         public Guid? UsuarioID { get; set; }

@@ -7,46 +7,26 @@ namespace Projeto_Event_Plus.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class EventoController : Controller
+    public class PresencaController : Controller
     {
-        private readonly IEventoRepository _eventoRepository;
+        private readonly IPresencaEventosRepository _presencaEventosRepository;
 
-        public EventoController(IEventoRepository eventoRepository)
+        public PresencaController(IPresencaEventosRepository presencaEventosRepository)
         {
-            _eventoRepository = eventoRepository;
+            _presencaEventosRepository = presencaEventosRepository;
         }
 
         /// <summary>
-        /// Endpoint  para Listar Todos os Eventos Presentes no Banco de Dados
+        /// Endpoint  para Increver-se Num Evento no Banco de Dados
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet]
-        public IActionResult Get()
-        {
-            try
-            {
-                List<Eventos> listaDeEventos = _eventoRepository.Listar();
-
-                return Ok(listaDeEventos);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
-        /// <summary>
-        /// Endpoint  para Cadastar um Evento no Banco de Dados
-        /// </summary>  
-        /// <param name="id"></param>
+        /// <param name="evento"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post(Eventos novoEvento)
+        public IActionResult Post(Presenca evento)
         {
             try
             {
-                _eventoRepository.Cadastrar(novoEvento);
+                _presencaEventosRepository.Inscrever(evento);
 
                 return Created();
             }
@@ -57,7 +37,27 @@ namespace Projeto_Event_Plus.Controllers
         }
 
         /// <summary>
-        /// Endpoint  para Deletar um Evento no Banco de Dados
+        /// Endpoint  para Listar Eventos Incritos no Banco de Dados
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<Presenca> listaDePresenca = _presencaEventosRepository.Listar();
+
+                return Ok(listaDePresenca);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint  para Listar Eventos Incritos no Banco de Dados
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -66,9 +66,10 @@ namespace Projeto_Event_Plus.Controllers
         {
             try
             {
-                _eventoRepository.Deletar(id);
+                _presencaEventosRepository.Deletar(id);
 
                 return NoContent();
+
             }
             catch (Exception)
             {
@@ -77,16 +78,16 @@ namespace Projeto_Event_Plus.Controllers
         }
 
         /// <summary>
-        /// Endpoint  para Atualizar um Evento no Banco de Dados
+        /// Endpoint  para Atualizar Presença Incrita no Banco de Dados
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="presencaEvento"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, Eventos Evento)
+        public IActionResult Put(Guid id, Presenca presencaEvento)
         {
             try
             {
-                _eventoRepository.Atualizar(id, Evento);
+                _presencaEventosRepository.Atualizar(id, presencaEvento);
 
                 return NoContent();
             }
@@ -97,7 +98,7 @@ namespace Projeto_Event_Plus.Controllers
         }
 
         /// <summary>
-        /// Endpoint  para ListarPorId Varios Eventos no Banco de Dados
+        /// Endpoint  para BuscarPresencaPorId no Banco de Dados
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -106,34 +107,35 @@ namespace Projeto_Event_Plus.Controllers
         {
             try
             {
-                List<Eventos> listaDeEventosPorId = _eventoRepository.ListarPorID(id);
+                Presenca presencaBuscada = _presencaEventosRepository.BuscarPorID(id);
 
-                return Ok(listaDeEventosPorId);
-
+                return Ok(presencaBuscada);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return BadRequest(e.Message);
+                throw;
             }
+
         }
 
         /// <summary>
-        /// Endpoint  próximos Eventos no Banco de Dados
+        /// Endpoint  para Listar as Presencas de um Usuário no Banco de Dados
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("ListarProximosEventos/{id}")]
-        public IActionResult ListarProximosEventos()
+        [HttpGet("ListarMinhasPresencas/{id}")]
+        public IActionResult Get(Guid id)
         {
             try
             {
-                List<Eventos> listaProximoEventos = _eventoRepository.ListarProximosEventos();
-                
-                return Ok(listaProximoEventos);
+                List<Presenca> listarMinhasPresencas = _presencaEventosRepository.ListarMinhas(id);
+
+                return Ok(listarMinhasPresencas);
             }
-            catch (Exception e)
+            catch (Exception error)
             {
-                return BadRequest(e.Message);
+
+                return BadRequest(error.Message);
             }
         }
     }

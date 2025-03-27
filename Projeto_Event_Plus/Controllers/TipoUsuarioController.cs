@@ -19,7 +19,7 @@ namespace Projeto_Event_Plus.Controllers
         /// <summary>
         /// Endpoint  para Listar Todos os TiposUsuario no Banco de Dados
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name=""></param>
         /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
@@ -39,7 +39,7 @@ namespace Projeto_Event_Plus.Controllers
         /// <summary>
         /// Endpoint  para Adicionar um TipoUsuario no Banco de Dados
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="novoTipoUsuario"></param>
         /// <returns></returns>
         [HttpPost]
         public IActionResult Post(TipoUsuario novoTipoUsuario)
@@ -79,7 +79,7 @@ namespace Projeto_Event_Plus.Controllers
         /// <summary>
         /// Endpoint  para Atualizar Um TipoUsuario Pelo Seu Id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="tipoUsuario id"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(Guid id, TipoUsuario tipoUsuario)

@@ -56,6 +56,7 @@ namespace Projeto_Event_Plus.Repositories
                 throw;
             }
         }
+
         public void Cadastrar(Usuario novoUsuario)
         {
             try
@@ -63,6 +64,7 @@ namespace Projeto_Event_Plus.Repositories
                 novoUsuario.Senha = Criptografia.GerarHash(novoUsuario.Senha!);
 
                 _context.Usuarios.Add(novoUsuario);
+
                 _context.SaveChanges();
             }
             catch (Exception)

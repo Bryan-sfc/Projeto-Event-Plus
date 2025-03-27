@@ -13,12 +13,10 @@ namespace Projeto_Event_Plus.Repositories
             _context = context;
         }
 
-        public void Cadastrar(ComentarioEvento comentarioEvento)
+        public void Cadastrar(Comentario comentarioEvento)
         {
             try
             {
-                comentarioEvento.ComentarioID= Guid.NewGuid();
-
                 _context.Comentario.Add(comentarioEvento);
 
                 _context.SaveChanges();
@@ -33,7 +31,7 @@ namespace Projeto_Event_Plus.Repositories
         {
             try
             {
-                ComentarioEvento comentarioEventoBuscado = _context.Comentario.Find(id)!;
+                Comentario comentarioEventoBuscado = _context.Comentario.Find(id)!;
 
                 if (comentarioEventoBuscado != null)
                 {
@@ -48,17 +46,61 @@ namespace Projeto_Event_Plus.Repositories
             }
         }
 
-        ComentarioEvento IComentarioRepository.BuscarPorIdUsuario(Guid idUsuario, Guid idEvento)
+        Comentario IComentarioRepository.BuscarPorIdUsuario(Guid idUsuario, Guid idEvento)
         {
             try
             {
-                ComentarioEvento comentarioBuscado = _context.Comentario.Find(idUsuario)!;
+                return _context.Comentario
+                    .Select(c => new Comentario
+                    {
+                        ComentarioID = c.ComentarioID,
+                        Descricao = c.Descricao,
+                        Exibe = c.Exibe,
+                        UsuarioID = c.UsuarioID,
+                        EventoID = c.EventoID,
 
-                if (comentarioBuscado != null)
-                {
-                    return comentarioBuscado;
-                }
-                return null!;
+                        Usuario = new Usuario
+                        {
+                            Nome = c.Usuario!.Nome
+                        },
+
+                        Eventos = new Eventos
+                        {
+                            Evento = c.Eventos!.Evento,
+                        }
+
+                    }).FirstOrDefault(c => c.UsuarioID == idUsuario && c.EventoID == idEvento)!;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        List<Comentario> IComentarioRepository.Listar(Guid id)
+        {
+            try
+            {
+                return _context.Comentario
+                    .Select(c => new Comentario
+                    {
+                        ComentarioID = c.ComentarioID,
+                        Descricao = c.Descricao,
+                        Exibe = c.Exibe,
+                        UsuarioID = c.UsuarioID,
+                        EventoID = c.EventoID,
+
+                        Usuario = new Usuario
+                        {
+                            Nome = c.Usuario!.Nome
+                        },
+
+                        Eventos = new Eventos
+                        {
+                            Evento = c.Eventos!.Evento,
+                        }
+
+                    }).Where(c => c.EventoID == id).ToList();
             }
             catch (Exception)
             {
@@ -67,10 +109,36 @@ namespace Projeto_Event_Plus.Repositories
             }
         }
 
-        List<ComentarioEvento> IComentarioRepository.Listar(Guid id)
+        public List<Comentario> ListarSomenteExibe(Guid id)
         {
-            List<ComentarioEvento> listaDeComentarioa = _context.Comentario.ToList();
-            return listaDeComentarioa;
+            try
+            {
+                return _context.Comentario
+                    .Select(c => new Comentario
+                    {
+                        ComentarioID = c.ComentarioID,
+                        Descricao = c.Descricao,
+                        Exibe = c.Exibe,
+                        UsuarioID = c.UsuarioID,
+                        EventoID = c.EventoID,
+
+                        Usuario = new Usuario
+                        {
+                            Nome = c.Usuario!.Nome
+                        },
+
+                        Eventos = new Eventos
+                        {
+                            Evento = c.Eventos!.Evento,
+                        }
+
+                    }).Where(c => c.Exibe == true && c.EventoID == id).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

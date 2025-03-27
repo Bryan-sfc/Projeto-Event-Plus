@@ -16,7 +16,7 @@ namespace Projeto_Event_Plus.Context
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Eventos> Eventos { get; set; }
         public DbSet<Presenca> Presenca { get; set; }
-        public DbSet<ComentarioEvento> Comentario { get; set; }
+        public DbSet<Comentario> Comentario { get; set; }
         public DbSet<Instituicao> Instituicao { get; set; }
         public DbSet<TipoUsuario> TipoUsuario { get; set; }
         public DbSet<TipoEvento> TipoEvento {  get; set; }

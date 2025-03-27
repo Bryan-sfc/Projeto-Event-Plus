@@ -205,3 +205,5 @@ C:\Users\55890867873\Desktop\Projeto-Event-Plus\Projeto_Event_Plus\obj\Debug\net
 C:\Users\55890867873\Desktop\Projeto-Event-Plus\Projeto_Event_Plus\obj\Debug\net8.0\Projeto_.5169295A.Up2Date
 C:\Users\55890867873\Desktop\Projeto-Event-Plus\Projeto_Event_Plus\obj\Debug\net8.0\Projeto_Event_Plus.genruntimeconfig.cache
 C:\Users\55890867873\Desktop\Projeto-Event-Plus\Projeto_Event_Plus\obj\Debug\net8.0\ref\Projeto_Event_Plus.dll
+C:\Users\55890867873\Desktop\Projeto-Event-Plus\Projeto_Event_Plus\bin\Debug\net8.0\Projeto_Event_Plus.xml
+C:\Users\55890867873\Desktop\Projeto-Event-Plus\Projeto_Event_Plus\obj\Debug\net8.0\Projeto_Event_Plus.xml

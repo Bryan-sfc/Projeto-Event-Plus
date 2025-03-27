@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "novoComentario",
-        "Type": "Projeto_Event_Plus.Domains.ComentarioEvento",
+        "Type": "Projeto_Event_Plus.Domains.Comentario",
         "IsRequired": true
       }
     ],
@@ -18,7 +18,7 @@
   {
     "ContainingType": "Projeto_Event_Plus.Controllers.ComentarioController",
     "Method": "Get",
-    "RelativePath": "api/Comentario",
+    "RelativePath": "api/Comentario/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -26,7 +26,7 @@
       {
         "Name": "id",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -112,16 +112,6 @@
   },
   {
     "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
-    "Method": "Index",
-    "RelativePath": "api/Evento",
-    "HttpMethod": "",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
     "Method": "Put",
     "RelativePath": "api/Evento/{id}",
     "HttpMethod": "PUT",
@@ -144,7 +134,7 @@
   {
     "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
     "Method": "GetById",
-    "RelativePath": "api/Evento/ListarPorId{id}",
+    "RelativePath": "api/Evento/BuscarPorId/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -160,7 +150,7 @@
   {
     "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
     "Method": "ListarProximosEventos",
-    "RelativePath": "api/Evento/ListarProximosEventos{id}",
+    "RelativePath": "api/Evento/ListarProximosEventos/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -168,6 +158,117 @@
       {
         "Name": "id",
         "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Projeto_Event_Plus.Controllers.LoginController",
+    "Method": "Login",
+    "RelativePath": "api/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDTO",
+        "Type": "Projeto_Event_Plus.DTO.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
+    "Method": "Post",
+    "RelativePath": "api/Presenca",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "evento",
+        "Type": "Projeto_Event_Plus.Domains.Presenca",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
+    "Method": "Get",
+    "RelativePath": "api/Presenca",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
+    "Method": "Deletar",
+    "RelativePath": "api/Presenca",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
+    "Method": "Put",
+    "RelativePath": "api/Presenca/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "presencaEvento",
+        "Type": "Projeto_Event_Plus.Domains.Presenca",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
+    "Method": "GetById",
+    "RelativePath": "api/Presenca/BuscarPorId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
+    "Method": "Get",
+    "RelativePath": "api/Presenca/ListarMinhasPresencas/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
@@ -360,7 +461,7 @@
   {
     "ContainingType": "Projeto_Event_Plus.Controllers.UsuarioController",
     "Method": "Get",
-    "RelativePath": "api/Usuario/BuscarPorEmailESenha{id}",
+    "RelativePath": "api/Usuario/BuscarPorEmailESenha",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -374,16 +475,6 @@
         "Name": "Senha",
         "Type": "System.String",
         "IsRequired": false
-      },
-      {
-        "Name": "loginDTO",
-        "Type": "Projeto_Event_Plus.DTO.LoginDTO",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
-        "IsRequired": true
       }
     ],
     "ReturnTypes": []

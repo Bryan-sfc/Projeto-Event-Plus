@@ -20,10 +20,10 @@ namespace Projeto_Event_Plus.Controllers
         /// <summary>
         /// Endpoint para cadastrar Comentarios
         /// </summary>
-        /// <param name="novoFeedback"></param>
+        /// <param name="novoComentario"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post(ComentarioEvento novoComentario)
+        public IActionResult Post(Comentario novoComentario)
         {
             try
             {
@@ -42,12 +42,12 @@ namespace Projeto_Event_Plus.Controllers
         /// Endpoint para listar Comentarios
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
             try
             {
-                List<ComentarioEvento> listaDeComentarios = _comentarioRepository.Listar(id);
+                List<Comentario> listaDeComentarios = _comentarioRepository.Listar(id);
 
                 return Ok(listaDeComentarios);
             }
@@ -56,7 +56,6 @@ namespace Projeto_Event_Plus.Controllers
 
                 return BadRequest(e.Message);
             }
-
         }
 
         /// <summary>
@@ -89,7 +88,7 @@ namespace Projeto_Event_Plus.Controllers
         {
             try
             {
-                ComentarioEvento novoFeedback = _comentarioRepository.BuscarPorIdUsuario(UsuarioId, EventoId);
+                Comentario novoFeedback = _comentarioRepository.BuscarPorIdUsuario(UsuarioId, EventoId);
                 return Ok(novoFeedback);
             }
             catch (Exception error)

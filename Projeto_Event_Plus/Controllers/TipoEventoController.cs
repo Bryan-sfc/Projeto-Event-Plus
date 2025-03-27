@@ -19,7 +19,7 @@ namespace Projeto_Event_Plus.Controllers
         /// <summary>
         /// Endpoint  para Listar Todos os TiposEventos no Banco de Dados
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name=""></param>
         /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
@@ -39,7 +39,7 @@ namespace Projeto_Event_Plus.Controllers
         /// <summary>
         /// Endpoint  para Adicionar um TipoEvento no Banco de Dados
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="novoTipoEvento"></param>
         /// <returns></returns>
         [HttpPost]
         public IActionResult Post(TipoEvento novoTipoEvento)
@@ -79,7 +79,7 @@ namespace Projeto_Event_Plus.Controllers
         /// <summary>
         /// Endpoint  para Atualizar Um TipoEvento Pelo Seu Id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="tipoEvento"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(Guid id, TipoEvento tipoEvento)
