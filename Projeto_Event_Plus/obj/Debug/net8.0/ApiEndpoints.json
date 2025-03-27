@@ -134,7 +134,7 @@
   {
     "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
     "Method": "GetById",
-    "RelativePath": "api/Evento/BuscarPorId/{id}",
+    "RelativePath": "api/Evento/ListarPorId/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -203,22 +203,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
-    "Method": "Deletar",
-    "RelativePath": "api/Presenca",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": false
-      }
-    ],
     "ReturnTypes": []
   },
   {

@@ -87,7 +87,7 @@ namespace Projeto_Event_Plus.Controllers
             try
             {
                 _eventoRepository.Atualizar(id, Evento);
-
+                        
                 return NoContent();
             }
             catch (Exception e)
@@ -101,7 +101,7 @@ namespace Projeto_Event_Plus.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("BuscarPorId/{id}")]
+        [HttpGet("ListarPorId/{id}")]
         public IActionResult GetById(Guid id)
         {
             try
@@ -118,7 +118,7 @@ namespace Projeto_Event_Plus.Controllers
         }
 
         /// <summary>
-        /// Endpoint  próximos Eventos no Banco de Dados
+        /// Endpoint para Listar próximos Eventos no Banco de Dados
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

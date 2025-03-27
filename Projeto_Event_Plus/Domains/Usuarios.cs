@@ -24,7 +24,6 @@ namespace Projeto_Event_Plus.Domains
         [StringLength(60, MinimumLength = 6, ErrorMessage = "A senha deve conter entre 3 e 30 caracteres.")]
         public string? Senha { get; set; }
 
-        [Required(ErrorMessage = "O tipo de usuario é obtigaório!")]
 
         /// <summary>
         /// Referencia da tabela TipoUsuario

@@ -19,7 +19,6 @@ namespace Projeto_Event_Plus.Controllers
         /// <summary>
         /// Endpoint  para Listar Todos os TiposUsuario no Banco de Dados
         /// </summary>
-        /// <param name=""></param>
         /// <returns></returns>
         [HttpGet]
         public IActionResult Get()

@@ -57,27 +57,6 @@ namespace Projeto_Event_Plus.Controllers
         }
 
         /// <summary>
-        /// Endpoint  para Listar Eventos Incritos no Banco de Dados
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpDelete]
-        public IActionResult Deletar(Guid id)
-        {
-            try
-            {
-                _presencaEventosRepository.Deletar(id);
-
-                return NoContent();
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
         /// Endpoint  para Atualizar Presença Incrita no Banco de Dados
         /// </summary>
         /// <param name="presencaEvento"></param>

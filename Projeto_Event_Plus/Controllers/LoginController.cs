@@ -41,12 +41,9 @@ namespace Projeto_Event_Plus.Controllers
                 //1º Passo - Definir as Claims() que serão fornecidos no token(Payload)
                 var claims = new[]
                 {
-                    new Claim(JwtRegisteredClaimNames.Jti,usuarioBuscado.IdUsuario.ToString()),
+                    new Claim(JwtRegisteredClaimNames.Jti,usuarioBuscado.IdUsuario.ToString()!),
                     new Claim(JwtRegisteredClaimNames.Email,usuarioBuscado.Email!),
-                    new Claim(JwtRegisteredClaimNames.Name, usuarioBuscado.Nome!),
-
-                    //podemos definir uma claim personalizada
-                    new Claim("Nome da Claim","Valor da Claim")
+                    new Claim("Tipo Do Usuário", usuarioBuscado.TipoUsuarioID!.ToString()!),
                 };
 
                 //2º Passo - Definir a chave de acesso do token

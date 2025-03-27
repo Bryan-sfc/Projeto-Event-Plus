@@ -239,7 +239,7 @@
         }
       }
     },
-    "/api/Evento/BuscarPorId/{id}": {
+    "/api/Evento/ListarPorId/{id}": {
       "get": {
         "tags": [
           "Evento"
@@ -269,7 +269,7 @@
         "tags": [
           "Evento"
         ],
-        "summary": "Endpoint  próximos Eventos no Banco de Dados",
+        "summary": "Endpoint para Listar próximos Eventos no Banco de Dados",
         "parameters": [
           {
             "name": "id",
@@ -357,28 +357,6 @@
           "Presenca"
         ],
         "summary": "Endpoint  para Listar Eventos Incritos no Banco de Dados",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Presenca"
-        ],
-        "summary": "Endpoint  para Listar Eventos Incritos no Banco de Dados",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "description": "",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -1043,8 +1021,7 @@
         "required": [
           "email",
           "nome",
-          "senha",
-          "tipoUsuarioID"
+          "senha"
         ],
         "type": "object",
         "properties": {
@@ -1067,6 +1044,7 @@
           },
           "tipoUsuarioID": {
             "type": "string",
+            "description": "Referencia da tabela TipoUsuario",
             "format": "uuid"
           },
           "tipoUsuario": {

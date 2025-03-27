@@ -97,6 +97,6 @@ namespace Projeto_Event_Plus.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
+        }   
     }
 }
