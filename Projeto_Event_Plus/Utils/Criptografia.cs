@@ -1,4 +1,4 @@
-﻿namespace Projeto_Event_Plus.Utils
+﻿namespace webapi.event_.Utils
 {
     public static class Criptografia
     {

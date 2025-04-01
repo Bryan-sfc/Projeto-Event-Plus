@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Projeto_Event_Plus.DTO
+namespace webapi.event_.DTO
 {
     public class LoginDTO
     {
-        [Required(ErrorMessage = "Informe o E-mail do usuário!")]
+        [Required(ErrorMessage = "Informe o e-mail do usuário!")]
         public string? Email { get; set; }
 
 
-        [Required(ErrorMessage = "A senha é obrigatório")]
-        [StringLength(60, MinimumLength = 6, ErrorMessage = "Informe a Senha di ")]
+        [Required(ErrorMessage = "Informe a senha do usuário!")]
         public string? Senha { get; set; }
     }
 }

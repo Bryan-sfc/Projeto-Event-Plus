@@ -1,77 +1,8 @@
 [
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.ComentarioController",
-    "Method": "Post",
-    "RelativePath": "api/Comentario",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "novoComentario",
-        "Type": "Projeto_Event_Plus.Domains.Comentario",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.ComentarioController",
+    "ContainingType": "webapi.event_.Controllers.EventosController",
     "Method": "Get",
-    "RelativePath": "api/Comentario/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.ComentarioController",
-    "Method": "Delete",
-    "RelativePath": "api/Comentario/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.ComentarioController",
-    "Method": "GetById",
-    "RelativePath": "api/Comentario/BuscarPorIdUsuario/{UsuarioId},{EventoId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "UsuarioId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "EventoId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
-    "Method": "Get",
-    "RelativePath": "api/Evento",
+    "RelativePath": "api/Eventos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -79,26 +10,79 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
+    "ContainingType": "webapi.event_.Controllers.EventosController",
     "Method": "Post",
-    "RelativePath": "api/Evento",
+    "RelativePath": "api/Eventos",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "novoEvento",
-        "Type": "Projeto_Event_Plus.Domains.Eventos",
+        "Name": "evento",
+        "Type": "webapi.event_.Domains.Eventos",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
-    "Method": "Deletar",
-    "RelativePath": "api/Evento",
+    "ContainingType": "webapi.event_.Controllers.EventosController",
+    "Method": "GetById",
+    "RelativePath": "api/Eventos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webapi.event_.Controllers.EventosController",
+    "Method": "Put",
+    "RelativePath": "api/Eventos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "evento",
+        "Type": "webapi.event_.Domains.Eventos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webapi.event_.Controllers.EventosController",
+    "Method": "Delete",
+    "RelativePath": "api/Eventos/{id}",
     "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webapi.event_.Controllers.EventosController",
+    "Method": "ListById",
+    "RelativePath": "api/Eventos/ListarPorId",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -111,60 +95,17 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
-    "Method": "Put",
-    "RelativePath": "api/Evento/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "Evento",
-        "Type": "Projeto_Event_Plus.Domains.Eventos",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
-    "Method": "GetById",
-    "RelativePath": "api/Evento/ListarPorId/{id}",
+    "ContainingType": "webapi.event_.Controllers.EventosController",
+    "Method": "GetNextEvents",
+    "RelativePath": "api/Eventos/ListarProximos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.EventoController",
-    "Method": "ListarProximosEventos",
-    "RelativePath": "api/Evento/ListarProximosEventos/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.LoginController",
+    "ContainingType": "webapi.event_.Controllers.LoginController",
     "Method": "Login",
     "RelativePath": "api/Login",
     "HttpMethod": "POST",
@@ -172,33 +113,17 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "loginDTO",
-        "Type": "Projeto_Event_Plus.DTO.LoginDTO",
+        "Name": "loginDto",
+        "Type": "webapi.event_.DTO.LoginDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
-    "Method": "Post",
-    "RelativePath": "api/Presenca",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "evento",
-        "Type": "Projeto_Event_Plus.Domains.Presenca",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
+    "ContainingType": "webapi.event_.Controllers.PresencasEventosController",
     "Method": "Get",
-    "RelativePath": "api/Presenca",
+    "RelativePath": "api/PresencasEventos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -206,9 +131,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
+    "ContainingType": "webapi.event_.Controllers.PresencasEventosController",
+    "Method": "Post",
+    "RelativePath": "api/PresencasEventos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "presencasEvento",
+        "Type": "webapi.event_.Domains.PresencasEventos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webapi.event_.Controllers.PresencasEventosController",
     "Method": "Put",
-    "RelativePath": "api/Presenca/{id}",
+    "RelativePath": "api/PresencasEventos/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -219,17 +160,17 @@
         "IsRequired": true
       },
       {
-        "Name": "presencaEvento",
-        "Type": "Projeto_Event_Plus.Domains.Presenca",
+        "Name": "presenca",
+        "Type": "webapi.event_.Domains.PresencasEventos",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
+    "ContainingType": "webapi.event_.Controllers.PresencasEventosController",
     "Method": "GetById",
-    "RelativePath": "api/Presenca/BuscarPorId/{id}",
+    "RelativePath": "api/PresencasEventos/BuscarPorId/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -243,9 +184,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.PresencaController",
-    "Method": "Get",
-    "RelativePath": "api/Presenca/ListarMinhasPresencas/{id}",
+    "ContainingType": "webapi.event_.Controllers.PresencasEventosController",
+    "Method": "GetByMe",
+    "RelativePath": "api/PresencasEventos/ListarMinhas/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -259,9 +200,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.TipoEventoController",
+    "ContainingType": "webapi.event_.Controllers.TiposEventosController",
     "Method": "Get",
-    "RelativePath": "api/TipoEvento",
+    "RelativePath": "api/TiposEventos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -269,26 +210,26 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.TipoEventoController",
+    "ContainingType": "webapi.event_.Controllers.TiposEventosController",
     "Method": "Post",
-    "RelativePath": "api/TipoEvento",
+    "RelativePath": "api/TiposEventos",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "novoTipoEvento",
-        "Type": "Projeto_Event_Plus.Domains.TipoEvento",
+        "Name": "tiposEvento",
+        "Type": "webapi.event_.Domains.TiposEventos",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.TipoEventoController",
-    "Method": "Deletar",
-    "RelativePath": "api/TipoEvento/{id}",
-    "HttpMethod": "DELETE",
+    "ContainingType": "webapi.event_.Controllers.TiposEventosController",
+    "Method": "GetById",
+    "RelativePath": "api/TiposEventos/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -301,9 +242,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.TipoEventoController",
+    "ContainingType": "webapi.event_.Controllers.TiposEventosController",
     "Method": "Put",
-    "RelativePath": "api/TipoEvento/{id}",
+    "RelativePath": "api/TiposEventos/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -315,58 +256,16 @@
       },
       {
         "Name": "tipoEvento",
-        "Type": "Projeto_Event_Plus.Domains.TipoEvento",
+        "Type": "webapi.event_.Domains.TiposEventos",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.TipoEventoController",
-    "Method": "GetById",
-    "RelativePath": "api/TipoEvento/BuscarPorId/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.TipoUsuarioController",
-    "Method": "Get",
-    "RelativePath": "api/TipoUsuario",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.TipoUsuarioController",
-    "Method": "Post",
-    "RelativePath": "api/TipoUsuario",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "novoTipoUsuario",
-        "Type": "Projeto_Event_Plus.Domains.TipoUsuario",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.TipoUsuarioController",
+    "ContainingType": "webapi.event_.Controllers.TiposEventosController",
     "Method": "Delete",
-    "RelativePath": "api/TipoUsuario/{id}",
+    "RelativePath": "api/TiposEventos/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -380,9 +279,51 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.TipoUsuarioController",
+    "ContainingType": "webapi.event_.Controllers.TiposUsuariosController",
+    "Method": "Get",
+    "RelativePath": "api/TiposUsuarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webapi.event_.Controllers.TiposUsuariosController",
+    "Method": "Post",
+    "RelativePath": "api/TiposUsuarios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tiposUsuario",
+        "Type": "webapi.event_.Domains.TiposUsuarios",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webapi.event_.Controllers.TiposUsuariosController",
+    "Method": "GetById",
+    "RelativePath": "api/TiposUsuarios/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webapi.event_.Controllers.TiposUsuariosController",
     "Method": "Put",
-    "RelativePath": "api/TipoUsuario/{id}",
+    "RelativePath": "api/TiposUsuarios/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -394,17 +335,17 @@
       },
       {
         "Name": "tipoUsuario",
-        "Type": "Projeto_Event_Plus.Domains.TipoUsuario",
+        "Type": "webapi.event_.Domains.TiposUsuarios",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.TipoUsuarioController",
-    "Method": "Get",
-    "RelativePath": "api/TipoUsuario/BuscarPorId/{id}",
-    "HttpMethod": "GET",
+    "ContainingType": "webapi.event_.Controllers.TiposUsuariosController",
+    "Method": "Delete",
+    "RelativePath": "api/TiposUsuarios/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -417,7 +358,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.UsuarioController",
+    "ContainingType": "webapi.event_.Controllers.UsuarioController",
     "Method": "Get",
     "RelativePath": "api/Usuario",
     "HttpMethod": "GET",
@@ -427,7 +368,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Projeto_Event_Plus.Controllers.UsuarioController",
+    "ContainingType": "webapi.event_.Controllers.UsuarioController",
     "Method": "Post",
     "RelativePath": "api/Usuario",
     "HttpMethod": "POST",
@@ -435,45 +376,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "novoUsuario",
-        "Type": "Projeto_Event_Plus.Domains.Usuario",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.UsuarioController",
-    "Method": "Get",
-    "RelativePath": "api/Usuario/BuscarPorEmailESenha",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Senha",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Projeto_Event_Plus.Controllers.UsuarioController",
-    "Method": "Get",
-    "RelativePath": "api/Usuario/BuscarPorId/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
+        "Name": "usuario",
+        "Type": "webapi.event_.Domains.Usuarios",
         "IsRequired": true
       }
     ],

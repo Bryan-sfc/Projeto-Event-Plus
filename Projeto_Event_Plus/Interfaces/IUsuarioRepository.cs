@@ -1,15 +1,16 @@
-﻿using Projeto_Event_Plus.Domains;
+﻿using webapi.event_.Domains;
+using webapi.event_.DTO;
 
-namespace Projeto_Event_Plus.Interfaces
+namespace webapi.event_.Interfaces
 {
     public interface IUsuarioRepository
     {
-        void Cadastrar(Usuario novoUsuario);
+        void Cadastrar(Usuarios usuario);
 
-        List<Usuario> Listar();
+        Usuarios BuscarPorId(Guid id);
 
-        Usuario BuscarPorID(Guid id);
+        Usuarios BuscarPorEmailESenha(string email, string senha);
 
-        Usuario BuscarPorEmailESenha(string Email, string Senha);
+        List<Usuarios> Listar();
     }
 }

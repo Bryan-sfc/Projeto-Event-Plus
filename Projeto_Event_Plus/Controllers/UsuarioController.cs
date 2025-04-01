@@ -1,34 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Projeto_Event_Plus.Interfaces;
-using Projeto_Event_Plus.Domains;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using webapi.event_.Domains;
+using webapi.event_.DTO;
+using webapi.event_.Interfaces;
 
-namespace Projeto_Event_Plus.Controllers
+namespace webapi.event_.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class UsuarioController : Controller
+    public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioRepository _usuarioRepository;
-
         public UsuarioController(IUsuarioRepository usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
         }
 
-        /// <summary>
-        /// Endpoint  para Listar Todos os Usuario Presentes no Banco de Dados
-        /// </summary>
-        /// <param name=""></param>
-        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                List<Usuario> listaDeUsuarios = _usuarioRepository.Listar();
-
-                return Ok(listaDeUsuarios);
+                return Ok(_usuarioRepository.Listar());
             }
             catch (Exception e)
             {
@@ -36,67 +30,19 @@ namespace Projeto_Event_Plus.Controllers
             }
         }
 
-        /// <summary>
-        /// Endpoint  para Adicionar Usuario no Banco de Dados
-        /// </summary>
-        /// <param name="novoUsuario"></param>
-        /// <returns></returns>
         [HttpPost]
-        public ActionResult Post(Usuario novoUsuario)
+        public IActionResult Post(Usuarios usuario)
         {
             try
             {
-                _usuarioRepository.Cadastrar(novoUsuario);
+                _usuarioRepository.Cadastrar(usuario);
 
-                return Created();
-
+                return StatusCode(201, usuario);
             }
-            catch (Exception e)
+            catch (Exception error)
             {
-                return BadRequest(e.Message);
+                return BadRequest(error.Message);
             }
         }
-
-        /// <summary>
-        /// Endpoint  para Buscar Usuario um Pelo ID no Banco de Dados
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet("BuscarPorId/{id}")]
-        public IActionResult Get(Guid id)
-        {
-            try
-            {
-                Usuario tipoUsuarioBuscado = _usuarioRepository.BuscarPorID(id);
-
-                return Ok(tipoUsuarioBuscado);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Endpoint  para Buscar Usuario por Email e Senha no Banco de Dados
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet("BuscarPorEmailESenha")]
-        public IActionResult Get([FromQuery] string Email, [FromQuery] string Senha)
-        {
-            try
-            {
-                Usuario usuarioBuscado = _usuarioRepository.BuscarPorEmailESenha(Email, Senha);
-
-                return Ok(usuarioBuscado);
-
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }   
     }
 }

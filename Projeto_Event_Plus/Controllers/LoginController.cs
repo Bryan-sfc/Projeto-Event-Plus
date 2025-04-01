@@ -1,12 +1,12 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Projeto_Event_Plus.Domains;
-using Projeto_Event_Plus.DTO;
-using Projeto_Event_Plus.Interfaces;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using webapi.event_.Domains;
+using webapi.event_.DTO;
+using webapi.event_.Interfaces;
 
-namespace Projeto_Event_Plus.Controllers
+namespace webapi.event_.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,49 +19,45 @@ namespace Projeto_Event_Plus.Controllers
             _usuarioRepository = usuarioRepository;
         }
 
-        /// <summary>
-        /// Endpoint para realizar a autenticação (Login)
-        /// </summary>
-        /// <param name="loginDTO">Email e senha do usuário</param>
-        /// <returns>Token de acesso</returns>
         [HttpPost]
-        public IActionResult Login(LoginDTO loginDTO)
+        public IActionResult Login(LoginDTO loginDto)
         {
             try
             {
-                Usuario usuarioBuscado = _usuarioRepository.BuscarPorEmailESenha(loginDTO.Email!, loginDTO.Senha!);
+                Usuarios usuarioBuscado = _usuarioRepository.BuscarPorEmailESenha(loginDto.Email!, loginDto.Senha!);
 
                 if (usuarioBuscado == null)
                 {
-                    return NotFound("Usuário não encontrado, emaill ou senha inválidos!");
+                    return NotFound("Email ou Senha Inválidos !");
                 }
 
-                //Caso o usuário seja encontrado, prossegue para a criação do token
+                //Caso encontre o usuário , prossegue para a criação do token
 
-                //1º Passo - Definir as Claims() que serão fornecidos no token(Payload)
+                //1º - Definir as informações(Claims) que serão fornecidos no token (PAYLOAD)
                 var claims = new[]
                 {
-                    new Claim(JwtRegisteredClaimNames.Jti,usuarioBuscado.IdUsuario.ToString()!),
+                    //formato da claim
+                    new Claim(JwtRegisteredClaimNames.Jti,usuarioBuscado.IdUsuario.ToString()),
                     new Claim(JwtRegisteredClaimNames.Email,usuarioBuscado.Email!),
-                    new Claim("Tipo Do Usuário", usuarioBuscado.TipoUsuarioID!.ToString()!),
+                    new Claim("Tipo do usuário", usuarioBuscado.TipoUsuario!.TituloTipoUsuario!),
                 };
 
-                //2º Passo - Definir a chave de acesso do token
-                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Projeto_Event_Plus-chave-autenticacao-Projeto_Event_Plus"));
+                //2º - Definir a chave de acesso ao token
+                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("eventos-chave-autenticacao-webapi-dev"));
 
-                //3º Passo - Definir as credenciais do Token (HEADER)
+                //3º - Definir as credenciais do token (HEADER)
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-                //4º Passo - Gerar o Token
+                //4º - Gerar token
                 var token = new JwtSecurityToken
                 (
                     //emissor do token
-                    issuer: "Projeto_Event_Plus",
+                    issuer: "webapi.event+",
 
                     //destinatário do token
-                    audience: "Projeto_Event_Plus",
+                    audience: "webapi.event+",
 
-                    //dados definidos nas claims
+                    //dados definidos nas claims(informações)
                     claims: claims,
 
                     //tempo de expiração do token
@@ -71,18 +67,15 @@ namespace Projeto_Event_Plus.Controllers
                     signingCredentials: creds
                 );
 
-                //retorna o token criado
-                return Ok(
-                    new
-                    {
-                        token = new JwtSecurityTokenHandler().WriteToken(token)
-                    }
-                    );
-
+                //5º - retornar o token criado
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token)
+                });
             }
-            catch (Exception e)
+            catch (Exception erro)
             {
-                return BadRequest(e.Message);
+                return BadRequest(erro.Message);
             }
         }
     }
