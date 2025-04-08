@@ -3,11 +3,22 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using webapi.event_.Context;
 using webapi.event_.Interfaces;
 using webapi.event_.Repositories;
+using webap.Contexts;
+using Azure.AI.ContentSafety;
+using Azure;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Configuração do Azure Content Safety
+var endpoint = "https://moderatorservicesbryan.cognitiveservices.azure.com/";
+var apiKey = "6tJ6lxDALWrYWpUEtFLOuRYAjqOH9QAfoT1qGsSTcTlvhGqWP3xSJQQJ99BDACYeBjFXJ3w3AAAHACOGCkXG";
+
+var client = new ContentSafetyClient(new Uri(endpoint),new AzureKeyCredential(apiKey));
+
+builder.Services.AddSingleton(client);
+
 
 builder.Services // Acessa a coleção de serviços da aplicação (Dependency Injection)
     .AddControllers() // Adiciona suporte a controladores na API (MVC ou Web API)
@@ -148,14 +159,6 @@ if (app.Environment.IsDevelopment())
         options.RoutePrefix = string.Empty;
     });
 }
-
-//Aplicar o serviço cognitivo
-//Habilita o serviço de moderador de conteúdo do Microsoft Azure
-builder.Services.AddSingleton(provider => new ContentModeratorClient(
-        new ApiKeyServiceClientCredentials("api key gerado no Azure"))
-{
-    Endpoint = "Adiciona o endpoint gerado no Azure"
-});
 
 //Adiciona o Cors(política criada)
 app.UseCors("CorsPolicy");

@@ -1,7 +1,7 @@
 ﻿using webapi.event_.Domains;
 using Microsoft.EntityFrameworkCore;
 
-namespace webapi.event_.Context
+namespace webap.Contexts
 {
     public class Contexts : DbContext
     {

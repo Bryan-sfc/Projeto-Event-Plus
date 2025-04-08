@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using webapi.event_.Domains;
-using webapi.event_.DTO;
 using webapi.event_.Interfaces;
 
 namespace webapi.event_.Controllers

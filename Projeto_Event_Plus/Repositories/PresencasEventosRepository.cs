@@ -1,6 +1,6 @@
-﻿using webapi.event_.Context;
-using webapi.event_.Domains;
+﻿using webapi.event_.Domains;
 using webapi.event_.Interfaces;
+using webap.Contexts;
 
 namespace webapi.event_.Repositories
 {
