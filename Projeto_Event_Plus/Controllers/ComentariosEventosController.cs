@@ -50,5 +50,62 @@ namespace webapi.event_.Controllers
                 throw;
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                _comentariosEventosRepository.Deletar(id);
+
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("ListarSomenteExibe")]
+        public IActionResult GetExibe(Guid id)
+        {
+            try
+            {
+                return Ok(_comentariosEventosRepository.ListarSomenteExibe(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Get(Guid id)
+        {
+            try
+            {
+                return Ok(_comentariosEventosRepository.Listar(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet("BuscarPorIdUsuario")]
+        public IActionResult GetByIdUser(Guid idUsuario, Guid idEvento)
+        {
+            try
+            {
+                return Ok(_comentariosEventosRepository.BuscarPorIdUsuario(idUsuario, idEvento));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

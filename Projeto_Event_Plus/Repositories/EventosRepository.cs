@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using webap.Contexts;
+using webapi.event_.Contexts;
 using webapi.event_.Domains;
 using webapi.event_.Interfaces;
 
@@ -7,9 +7,9 @@ namespace webapi.event_.Repositories
 {
     public class EventosRepository : IEventosRepository
     {
-        private readonly Contexts _context;
+        private readonly Context _context;
 
-        public EventosRepository(Contexts context)
+        public EventosRepository(Context context)
         {
             _context = context;
         }

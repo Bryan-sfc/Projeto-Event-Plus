@@ -1,15 +1,15 @@
 ﻿using webapi.event_.Domains;
 using Microsoft.EntityFrameworkCore;
 
-namespace webap.Contexts
+namespace webapi.event_.Contexts
 {
-    public class Contexts : DbContext
+    public class Context : DbContext
     {
-        public Contexts()
+        public Context()
         {
         }
 
-        public Contexts(DbContextOptions<Contexts> options) : base(options)
+        public Context(DbContextOptions<Context> options) : base(options)
         {
         }
 

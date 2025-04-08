@@ -1,4 +1,4 @@
-﻿using webap.Contexts;
+﻿using webapi.event_.Contexts;
 using webapi.event_.Domains;
 using webapi.event_.Interfaces;
 
@@ -7,9 +7,9 @@ namespace webapi.event_.Repositories
     public class TiposEventosRepository : ITiposEventosRepository
     {
 
-        private readonly Contexts _context;
+        private readonly Context _context;
 
-        public TiposEventosRepository(Contexts context)
+        public TiposEventosRepository(Context context)
         {
             _context = context;
         }

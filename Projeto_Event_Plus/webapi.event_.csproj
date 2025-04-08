@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>webapi.event_</RootNamespace>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <UserSecretsId>a02e53c3-8bbc-4bc0-a888-bf7a90f0ae58</UserSecretsId>
   </PropertyGroup>
     
   <ItemGroup>

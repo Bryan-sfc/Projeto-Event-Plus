@@ -1,15 +1,15 @@
-﻿using webap.Contexts;
-using webapi.event_.Domains;
+﻿using webapi.event_.Domains;
 using webapi.event_.Interfaces;
+using webapi.event_.Contexts;
 
 namespace webapi.event_.Repositories
 {
     public class ComentariosEventosRepository : IComentariosEventosRepository
     {
 
-        private readonly Contexts _context;
+        private readonly Context _context;
 
-        public ComentariosEventosRepository(Contexts context)
+        public ComentariosEventosRepository(Context context)
         {
             _context = context;
         }

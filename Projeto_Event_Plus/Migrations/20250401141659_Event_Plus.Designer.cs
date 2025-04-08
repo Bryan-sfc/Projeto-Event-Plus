@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using webap.Contexts;
+using webapi.event_.Contexts;
 
 #nullable disable
 
 namespace webapi.event_.Migrations
 {
-    [DbContext(typeof(Contexts))]
+    [DbContext(typeof(Context))]
     [Migration("20250401141659_Event_Plus")]
     partial class Event_Plus
     {

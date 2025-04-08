@@ -1,14 +1,14 @@
-﻿using webapi.event_.Domains;
+﻿using webapi.event_.Contexts;
+using webapi.event_.Domains;
 using webapi.event_.Interfaces;
-using webap.Contexts;
 
 namespace webapi.event_.Repositories
 {
     public class PresencasEventosRepository : IPresencasEventosRepository
     {
-        private readonly Contexts _context;
+        private readonly Context _context;
 
-        public PresencasEventosRepository(Contexts context)
+        public PresencasEventosRepository(Context context)
         {
             _context = context;
         }

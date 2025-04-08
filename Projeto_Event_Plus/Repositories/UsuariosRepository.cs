@@ -1,4 +1,4 @@
-﻿using webap.Contexts;
+﻿using webapi.event_.Contexts;
 using webapi.event_.Domains;
 using webapi.event_.Interfaces;
 using webapi.event_.Utils;
@@ -7,9 +7,9 @@ namespace webapi.event_.Repositories
 {
     public class UsuariosRepository : IUsuarioRepository
     {
-        private readonly Contexts _context;
+        private readonly Context _context;
 
-        public UsuariosRepository(Contexts context)
+        public UsuariosRepository(Context context)
         {
             _context = context;
         }

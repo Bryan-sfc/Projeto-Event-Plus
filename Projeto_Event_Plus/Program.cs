@@ -1,19 +1,23 @@
-using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
-using webapi.event_.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using webapi.event_.Repositories;
-using webap.Contexts;
+using Microsoft.OpenApi.Models;
+using webapi.event_.Interfaces;
 using Azure.AI.ContentSafety;
+using System.Reflection;
 using Azure;
+using webapi.event_.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Configuração do Azure Content Safety
-var endpoint = "https://moderatorservicesbryan.cognitiveservices.azure.com/";
-var apiKey = "6tJ6lxDALWrYWpUEtFLOuRYAjqOH9QAfoT1qGsSTcTlvhGqWP3xSJQQJ99BDACYeBjFXJ3w3AAAHACOGCkXG";
+var endpoint = builder.Configuration["AzureContentSafety:Endpoint"];
+var apiKey = builder.Configuration["AzureContentSafety:ApiKey"];
+
+if (string.IsNullOrEmpty(endpoint) || string.IsNullOrEmpty(apiKey))
+{
+    throw new InvalidOperationException("Azure Content Safety: Endpoint ou API Key não foram configuradas");
+}
 
 var client = new ContentSafetyClient(new Uri(endpoint),new AzureKeyCredential(apiKey));
 
@@ -32,7 +36,7 @@ builder.Services // Acessa a coleção de serviços da aplicação (Dependency Inject
     });
 
 // Adiciona o contexto do banco de dados (exemplo com SQL Server)
-builder.Services.AddDbContext<Contexts>(options =>
+builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Adiciona o repositório e a interface ao container de injecao de dependência
