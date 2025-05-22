@@ -11,11 +11,11 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("a02e53c3-8bbc-4bc0-a888-bf7a90f0ae58")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("2a464312-6d4d-429f-9bdf-0cdac7891d6c")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("webapi.event_")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d120c01271b00a4f1a9c9d1caecc2ea58ee8d91d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb7b4378ffebc67a0ab8c1d2b6d96d0bcd226279")]
 [assembly: System.Reflection.AssemblyProductAttribute("webapi.event_")]
 [assembly: System.Reflection.AssemblyTitleAttribute("webapi.event_")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
