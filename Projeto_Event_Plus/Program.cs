@@ -45,6 +45,7 @@ builder.Services.AddScoped<ITiposEventosRepository, TiposEventosRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuariosRepository>();
 builder.Services.AddScoped<IEventosRepository, EventosRepository>();
 builder.Services.AddScoped<IPresencasEventosRepository, PresencasEventosRepository>();
+builder.Services.AddScoped<IComentariosEventosRepository, ComentariosEventosRepository>();
 
 //Adiciona o serviço de Controllers
 builder.Services.AddControllers();

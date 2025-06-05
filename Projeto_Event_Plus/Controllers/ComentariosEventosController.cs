@@ -27,7 +27,7 @@ namespace webapi.event_.Controllers
             {
                 if (string.IsNullOrEmpty(comentario.Descricao))
                 {
-                    return BadRequest("O texto a ser moderado não pode estar vazio! Seu Merda!");
+                    return BadRequest("O texto a ser moderado não pode estar vazio!");
                 }
 
                 //Criar objeto de análise do content safety
@@ -46,7 +46,6 @@ namespace webapi.event_.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
