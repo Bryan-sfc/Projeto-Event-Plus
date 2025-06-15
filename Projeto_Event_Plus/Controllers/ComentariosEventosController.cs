@@ -1,6 +1,8 @@
 ﻿using Azure;
 using Azure.AI.ContentSafety;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using webapi.event_.Contexts;
 using webapi.event_.Domains;
 using webapi.event_.Interfaces;
 
@@ -12,12 +14,14 @@ namespace webapi.event_.Controllers
     public class ComentariosEventosController : ControllerBase
     {
         private readonly IComentariosEventosRepository _comentariosEventosRepository;
-        private readonly ContentSafetyClient _contentSafetyClient;
+        private readonly ContentSafetyClient _contentsafetyclient;
+        private readonly Context _contexto;
 
-        public ComentariosEventosController(ContentSafetyClient contentSafetyClient,IComentariosEventosRepository comentariosEventosRepository)
+        public ComentariosEventosController(ContentSafetyClient contentsafetyclient, IComentariosEventosRepository comentariosEventosRepository, Context contexto)
         {
             _comentariosEventosRepository = comentariosEventosRepository;
-            _contentSafetyClient = contentSafetyClient;
+            _contentsafetyclient = contentsafetyclient;
+            _contexto = contexto;
         }
 
         [HttpPost]
@@ -25,28 +29,42 @@ namespace webapi.event_.Controllers
         {
             try
             {
-                if (string.IsNullOrEmpty(comentario.Descricao))
+                Eventos? eventoBuscado = _contexto.Eventos.FirstOrDefault(e => e.IdEvento == comentario.IdEvento);
+
+                if (eventoBuscado == null)
                 {
-                    return BadRequest("O texto a ser moderado não pode estar vazio!");
+                    return NotFound("Evento não encontrado");
                 }
 
-                //Criar objeto de análise do content safety
+                if (eventoBuscado.DataEvento >= DateTime.UtcNow)
+                {
+                    return BadRequest("Não é possivel comentar um evento que ainda não aconteceu!");
+                }
+
+
+                if (string.IsNullOrEmpty(comentario.Descricao))
+                {
+                    return BadRequest("O texto a ser moderado nao pode estar vazio");
+                }
+                //criar objeto de analise do content safety
                 var request = new AnalyzeTextOptions(comentario.Descricao);
 
-                //Chamar a API do Content Safety
-                Response<AnalyzeTextResult> response = await _contentSafetyClient.AnalyzeTextAsync(request);
+                //chamar a API do content safety
+                Response<AnalyzeTextResult> response = await _contentsafetyclient.AnalyzeTextAsync(request);
 
-                //Verificar se o texto analisado sem alguma severidade
-                bool temConteudoImproprio = response.Value.CategoriesAnalysis.Any(c => c.Severity > 0);
+                //verifica se o texto analisado tem alguma severidade
+                bool temConteudoIproprio = response.Value.CategoriesAnalysis.Any(c => c.Severity > 0);
 
-                //se o conteúdo for impróprio, não exibe, caso contrário, exibe
-                comentario.Exibe = !temConteudoImproprio;
+                comentario.Exibe = !temConteudoIproprio;
 
+                _comentariosEventosRepository.Cadastrar(comentario);
                 return Ok();
+
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+
+                return BadRequest(e.Message);
             }
         }
 
@@ -102,9 +120,9 @@ namespace webapi.event_.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
     }
 }
